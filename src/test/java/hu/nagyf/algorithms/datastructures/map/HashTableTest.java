@@ -54,4 +54,18 @@ public class HashTableTest {
             Assert.assertEquals(i, (int)table.get(Integer.toString(i)).get());
         }
     }
+
+    @Test
+    public void testItemEquals() {
+        var first = new HashTable.Item<>("test", 42);
+        var second = new HashTable.Item<>("test", 32);
+        Assert.assertEquals(first, second);
+    }
+
+    @Test
+    public void testItemNotEquals() {
+        var first = new HashTable.Item<>("test", 42);
+        var second = new HashTable.Item<>("test123", 42);
+        Assert.assertNotEquals(first, second);
+    }
 }

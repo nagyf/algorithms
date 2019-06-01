@@ -30,10 +30,6 @@ public class MinPriorityQueue<T extends Comparable<T>> implements PriorityQueue<
         public int priority = 0;
         public U value;
 
-        public Item(U value) {
-            this.value = value;
-        }
-
         public Item(int priority, U value) {
             this.priority = priority;
             this.value = value;

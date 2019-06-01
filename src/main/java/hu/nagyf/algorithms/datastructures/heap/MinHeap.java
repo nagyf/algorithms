@@ -97,10 +97,6 @@ public class MinHeap<T extends Comparable<T>> {
         }
     }
 
-    private boolean isLeaf(final int idx) {
-        return idx >= size / 2 && idx <= size;
-    }
-
     private void swap(final int firstIdx, final int secondIdx) {
         var tmp = heap[firstIdx];
         heap[firstIdx] = heap[secondIdx];

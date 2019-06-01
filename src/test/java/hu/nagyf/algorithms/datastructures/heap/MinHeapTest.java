@@ -11,6 +11,14 @@ public class MinHeapTest {
         Assert.assertEquals(0, minHeap.getSize());
     }
 
+    @Test(expected = RuntimeException.class)
+    public void createAndPutOverCapacity() {
+        var minHeap = new MinHeap<String>(2);
+        minHeap.insert("test");
+        minHeap.insert("test2");
+        minHeap.insert("test3");
+    }
+
     @Test
     public void getMinimumSingle() {
         var minHeap = new MinHeap<Integer>(10);
