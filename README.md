@@ -1,5 +1,7 @@
 # Algorithms and data structures
 
+[![Build Status](https://travis-ci.org/nagyf/algorithms.svg?branch=master)](https://travis-ci.org/nagyf/algorithms)
+
 Common algorithms and data structures implemented in Java.
 
 ## Data structures
@@ -17,6 +19,7 @@ Common algorithms and data structures implemented in Java.
 - Cache
     - LRU cache
 - Stack
+- HashTable
 
 ## Algorithms
 
