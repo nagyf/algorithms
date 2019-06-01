@@ -2,6 +2,7 @@ package hu.nagyf.algorithms.datastructures;
 
 import java.util.Iterator;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
