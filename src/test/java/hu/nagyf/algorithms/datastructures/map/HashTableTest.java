@@ -26,7 +26,6 @@ public class HashTableTest {
     }
 
     @Test
-    @SuppressWarnings("unchecked")
     public void putGetCollision() {
         var table = new HashTable<String, Integer>();
         table = spy(table);
