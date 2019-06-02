@@ -2,6 +2,7 @@ package hu.nagyf.algorithms.datastructures;
 
 import java.util.Iterator;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -86,11 +87,15 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
     public Optional<Integer> findIndex(final T value) {
+        return findIndex((other) -> value.equals(other));
+    }
+
+    public Optional<Integer> findIndex(final Function<T, Boolean> pred) {
         var node = head;
         var idx = 0;
         while(node.next != tail) {
             node = node.next;
-            if (value.equals(node.value)) {
+            if (pred.apply(node.value)) {
                 return Optional.of(idx);
             }
 

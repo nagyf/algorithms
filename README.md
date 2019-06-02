@@ -21,6 +21,9 @@ Common algorithms and data structures implemented in Java.
     - LRU cache
 - Stack
 - HashTable
+- Graph
+    - Directed graph (both weighted and unweighted)
+    - Undirected graph (both weighted and unweighted)
 
 ## Algorithms
 
