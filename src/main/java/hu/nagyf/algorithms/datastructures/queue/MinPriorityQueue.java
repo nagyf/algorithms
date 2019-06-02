@@ -4,6 +4,10 @@ import java.util.Optional;
 
 import hu.nagyf.algorithms.datastructures.heap.MinHeap;
 
+/**
+ * A Priority Queue implementation in which the smaller priority will be returned earlier.
+ * This one uses a {@link MinHeap} to store the values.
+ */
 public class MinPriorityQueue<T extends Comparable<T>> implements PriorityQueue<T> {
     private MinHeap<Item<T>> minHeap;
 
@@ -26,8 +30,12 @@ public class MinPriorityQueue<T extends Comparable<T>> implements PriorityQueue<
         return minHeap.peek().map((item) -> item.value);
     }
 
+    /**
+     * The Item class is used to wrap the U values before putting them in the queue.
+     * This wrapper class ensures that every value has a corresponding priority.
+     */
     public static class Item<U extends Comparable<U>> implements Comparable<Item<U>> {
-        public int priority = 0;
+        public int priority;
         public U value;
 
         public Item(int priority, U value) {

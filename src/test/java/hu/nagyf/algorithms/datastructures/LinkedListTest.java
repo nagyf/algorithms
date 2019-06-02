@@ -165,7 +165,7 @@ public class LinkedListTest {
     @Test
     public void findIndexEmpty() {
         LinkedList<Integer> list = new LinkedList<>();
-        var index = list.findIndex(20);
+        var index = list.findFirstIndex(20);
         Assert.assertTrue(index.isEmpty());
     }
 
@@ -175,7 +175,7 @@ public class LinkedListTest {
         list.append(10);
         list.append(20);
         list.append(30);
-        var index = list.findIndex(20);
+        var index = list.findFirstIndex(20);
         Assert.assertFalse(index.isEmpty());
         Assert.assertEquals(1, (int)index.get());
     }
@@ -186,7 +186,7 @@ public class LinkedListTest {
         list.append(10);
         list.append(20);
         list.append(30);
-        var index = list.findIndex(30);
+        var index = list.findFirstIndex(30);
         Assert.assertFalse(index.isEmpty());
         Assert.assertEquals(2, (int)index.get());
     }
@@ -197,7 +197,7 @@ public class LinkedListTest {
         list.append(10);
         list.append(20);
         list.append(30);
-        var index = list.findIndex(40);
+        var index = list.findFirstIndex(40);
         Assert.assertTrue(index.isEmpty());
     }
 

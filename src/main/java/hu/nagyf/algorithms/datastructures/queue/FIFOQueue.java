@@ -4,6 +4,11 @@ import java.util.Optional;
 
 import hu.nagyf.algorithms.datastructures.LinkedList;
 
+/**
+ * A First-In-First-Out Queue implementation.
+ * This one uses a simple linked list to store the values.
+ * The values will be returned in the order they were put in the queue.
+ */
 public class FIFOQueue<T> implements Queue<T> {
     private LinkedList<T> queue;
 

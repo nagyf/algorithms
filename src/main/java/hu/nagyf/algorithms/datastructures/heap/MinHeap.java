@@ -2,6 +2,10 @@ package hu.nagyf.algorithms.datastructures.heap;
 
 import java.util.Comparator;
 
+/**
+ * Minimum Heap is a specialization of {@link Heap}.
+ * This heap ensures that the smallest value is always the root.
+ */
 public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 
     public MinHeap() {

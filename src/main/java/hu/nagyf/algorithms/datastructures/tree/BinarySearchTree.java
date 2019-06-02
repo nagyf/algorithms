@@ -2,6 +2,11 @@ package hu.nagyf.algorithms.datastructures.tree;
 
 import java.util.Comparator;
 
+/**
+ * A special kind of Binary Tree that keeps the tree balanced.
+ *
+ * @param <T> the type of the values to store in the tree
+ */
 public class BinarySearchTree<T extends Comparable<T>> {
     private final BinaryTree<T> tree;
     private final Comparator<T> comparator;

@@ -5,14 +5,27 @@ import hu.nagyf.algorithms.datastructures.Stack;
 import hu.nagyf.algorithms.datastructures.queue.FIFOQueue;
 import hu.nagyf.algorithms.datastructures.queue.Queue;
 
+/**
+ * A Binary Tree is a special Tree, in which each node can have 0, 1 or 2 children.
+ *
+ * @param <T> the type of data to store within the nodes
+ */
 public class BinaryTree<T> {
 
     private Node<T> root;
 
+    /**
+     * Constructs a binary tree with a root value
+     *
+     * @param rootValue the value of the root node
+     */
     public BinaryTree(final T rootValue) {
         root = new Node<>(null, rootValue);
     }
 
+    /**
+     * Returns the root node
+     */
     public Node<T> getRoot() {
         return root;
     }
@@ -33,9 +46,26 @@ public class BinaryTree<T> {
         return new BreadthFirstIterator<>(root);
     }
 
+    /**
+     * A node of the tree.
+     *
+     * @param <U> the type of the data stored within the node
+     */
     public static class Node<U> {
+        /**
+         * The parent of the current node.
+         * For the root node it is null.
+         */
         public Node<U> parent;
+
+        /**
+         * The left child of this node. Can be null.
+         */
         public Node<U> left;
+
+        /**
+         * The right child of this node. Can be null.
+         */
         public Node<U> right;
         public U value;
 
@@ -44,6 +74,12 @@ public class BinaryTree<T> {
             this.value = value;
         }
 
+        /**
+         * Insert a new child on the left branch.
+         *
+         * @param value the value to insert
+         * @return the new node that was inserted
+         */
         public Node<U> insertLeft(final U value) {
             var newNode = new Node<>(this, value);
             if (left != null) {
@@ -54,6 +90,12 @@ public class BinaryTree<T> {
             return newNode;
         }
 
+        /**
+         * Insert a new child on the right branch.
+         *
+         * @param value the value to insert
+         * @return the new node that was inserted
+         */
         public Node<U> insertRight(final U value) {
             var newNode = new Node<>(this, value);
             if (right != null) {
@@ -64,6 +106,12 @@ public class BinaryTree<T> {
             return newNode;
         }
 
+        /**
+         * If the specified node is a child of this node, then remove it.
+         *
+         * @param node the node to be removed
+         * @return true if it was removed, otherwise false
+         */
         public boolean removeChild(final Node<U> node) {
             if (left == node) {
                 left = null;
@@ -78,6 +126,11 @@ public class BinaryTree<T> {
             return false;
         }
 
+        /**
+         * Remove this node. The Root node cannot be removed.
+         *
+         * @return true if it was removed
+         */
         public boolean remove() {
             if (parent == null) {
                 return false;
@@ -96,6 +149,13 @@ public class BinaryTree<T> {
             return false;
         }
 
+        /**
+         * Replace the child node with another node.
+         *
+         * @param nodeToReplace the node to replace
+         * @param replaceWith the node to replace with
+         * @return true if it was replaced
+         */
         public boolean replaceChild(final Node<U> nodeToReplace, final Node<U> replaceWith) {
             if (left == nodeToReplace) {
                 left = replaceWith;
@@ -113,6 +173,9 @@ public class BinaryTree<T> {
         }
     }
 
+    /**
+     * First visits the main node, and then the left and the right branches.
+     */
     public static class PreOrderIterator<U> extends AbstractIterator<Node<U>> {
         private Stack<Node<U>> path;
 
@@ -141,6 +204,9 @@ public class BinaryTree<T> {
         }
     }
 
+    /**
+     * First visits the left branch, then the main node and then the right branch.
+     */
     public static class InOrderIterator<U> extends AbstractIterator<Node<U>> {
         private Queue<Node<U>> path;
 
@@ -179,6 +245,9 @@ public class BinaryTree<T> {
         }
     }
 
+    /**
+     * First visits the left and the right branches, and then the main node.
+     */
     public static class PostOrderIterator<U> extends AbstractIterator<Node<U>> {
         private Queue<Node<U>> path;
 
@@ -216,6 +285,9 @@ public class BinaryTree<T> {
         }
     }
 
+    /**
+     * Visits the nodes of the tree level by level, from left to right.
+     */
     public static class BreadthFirstIterator<U> extends AbstractIterator<Node<U>> {
         private final Queue<Node<U>> levels;
 

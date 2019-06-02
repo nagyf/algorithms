@@ -26,6 +26,14 @@ public class HashTableTest {
     }
 
     @Test
+    public void putOverwrite() {
+        var table = new HashTable<String, Integer>();
+        table.put("test", 123);
+        table.put("test", 321);
+        Assert.assertEquals(321, (int)table.get("test").get());
+    }
+
+    @Test
     public void putGetCollision() {
         var table = new HashTable<String, Integer>();
         table = spy(table);
