@@ -1,20 +1,19 @@
 package hu.nagyf.algorithms.datastructures.map;
 
-import java.lang.reflect.Array;
 import java.util.Objects;
 import java.util.Optional;
 
+import hu.nagyf.algorithms.datastructures.Array;
 import hu.nagyf.algorithms.datastructures.LinkedList;
 
 public class HashTable<K, V> {
     private static final int DEFAULT_SIZE = 128;
 
-    private LinkedList<Item<K, V>>[] table;
+    private Array<LinkedList<Item<K, V>>> table;
     private int tableSize;
 
-    @SuppressWarnings("unchecked")
     public HashTable(final int tableSize) {
-        this.table = (LinkedList<Item<K, V>>[])Array.newInstance(LinkedList.class, tableSize);
+        this.table = new Array<>(tableSize);
         this.tableSize = tableSize;
     }
 
@@ -29,20 +28,20 @@ public class HashTable<K, V> {
 
         final var hash = hash(key);
         final var item = new Item<>(key, value);
-        if (table[hash] == null) {
-            table[hash] = new LinkedList<>();
+        if (table.get(hash) == null) {
+            table.set(hash, new LinkedList<>());
         }
 
-        table[hash].append(item);
+        table.get(hash).append(item);
     }
 
     public Optional<V> get(final K key) {
         var hash = hash(key);
-        if (table[hash] == null || table[hash].isEmpty()) {
+        if (table.get(hash) == null || table.get(hash).isEmpty()) {
             return Optional.empty();
         }
 
-        return table[hash].stream()
+        return table.get(hash).stream()
                 .filter((item) -> item.key.equals(key))
                 .findFirst()
                 .map((item) -> item.value);

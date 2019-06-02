@@ -6,6 +6,7 @@ Common algorithms and data structures implemented in Java.
 
 ## Data structures
 
+- Array
 - List
     - Double-Linked list
 - Queue
