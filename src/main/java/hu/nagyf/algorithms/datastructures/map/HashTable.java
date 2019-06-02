@@ -47,6 +47,20 @@ public class HashTable<K, V> {
                 .map((item) -> item.value);
     }
 
+    public void remove(final K key) {
+        var hash = hash(key);
+
+        if (table.get(hash) == null || table.get(hash).isEmpty()) {
+            return;
+        }
+
+        final LinkedList<Item<K, V>> result = table.get(hash).stream()
+                .filter(item -> item.key != key)
+                .collect(LinkedList.collector());
+
+        table.set(hash, result);
+    }
+
     int hash(final K key) {
         return key.hashCode() % tableSize;
     }

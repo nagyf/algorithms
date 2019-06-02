@@ -2,7 +2,7 @@ package hu.nagyf.algorithms.datastructures;
 
 import java.util.Iterator;
 import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -42,6 +42,11 @@ public class LinkedList<T> implements Iterable<T> {
         tail.previous.next = node;
         tail.previous = node;
         ++size;
+    }
+
+    public LinkedList<T> append(final LinkedList<T> otherList) {
+        otherList.stream().forEach(this::append);
+        return this;
     }
 
     public Optional<T> removeFirst() {
@@ -137,6 +142,14 @@ public class LinkedList<T> implements Iterable<T> {
 
     public Stream<T> stream() {
         return StreamSupport.stream(spliterator(), false);
+    }
+
+    public static <T> Collector<T, LinkedList<T>, LinkedList<T>> collector() {
+        return Collector.of(
+                LinkedList::new,
+                LinkedList::append,
+                LinkedList::append
+        );
     }
 
     class Node<U> {

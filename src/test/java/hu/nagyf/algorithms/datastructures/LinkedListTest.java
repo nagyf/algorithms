@@ -1,6 +1,7 @@
 package hu.nagyf.algorithms.datastructures;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -93,6 +94,36 @@ public class LinkedListTest {
         LinkedList<Integer> list = new LinkedList<>();
         var last = list.removeLast();
         Assert.assertTrue(last.isEmpty());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testAppendListNull() {
+        LinkedList<Integer> list = new LinkedList<>();
+        LinkedList<Integer> other = null;
+        list.append(other);
+    }
+
+    @Test
+    public void testAppendListEmpty() {
+        LinkedList<Integer> list = new LinkedList<>();
+        LinkedList<Integer> other = new LinkedList<>();
+        list.append(other);
+        Assert.assertTrue(list.isEmpty());
+    }
+
+    @Test
+    public void testAppendList() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.append(1);
+        list.append(2);
+        LinkedList<Integer> other = new LinkedList<>();
+        other.append(3);
+        other.append(4);
+
+        list.append(other);
+        Assert.assertEquals(4, list.size());
+        var result = list.stream().map(i -> Integer.toString(i)).collect(Collectors.joining(", "));
+        Assert.assertEquals("1, 2, 3, 4", result);
     }
 
     @Test

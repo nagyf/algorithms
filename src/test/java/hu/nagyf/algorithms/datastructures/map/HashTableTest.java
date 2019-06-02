@@ -68,4 +68,18 @@ public class HashTableTest {
         var second = new HashTable.Item<>("test123", 42);
         Assert.assertNotEquals(first, second);
     }
+
+    @Test
+    public void testRemoveNonExistentItem() {
+        var table = new HashTable<>();
+        table.remove("test");
+    }
+
+    @Test
+    public void testRemove() {
+        var table = new HashTable<>();
+        table.put("test", 10);
+        table.remove("test");
+        Assert.assertTrue(table.get("test").isEmpty());
+    }
 }
