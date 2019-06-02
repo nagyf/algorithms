@@ -8,15 +8,17 @@ import hu.nagyf.algorithms.datastructures.Array;
 public class MinHeap<T extends Comparable<T>> {
     private Array<T> heap;
     private int size;
-    private int capacity;
     private Comparator<T> comparator;
+
+    public MinHeap() {
+        this(10, Comparator.naturalOrder());
+    }
 
     public MinHeap(final int capacity) {
         this(capacity, Comparator.naturalOrder());
     }
 
     public MinHeap(final int capacity, final Comparator<T> comparator) {
-        this.capacity = capacity;
         assert capacity > 0;
 
         this.comparator = comparator;
@@ -25,9 +27,6 @@ public class MinHeap<T extends Comparable<T>> {
     }
 
     public void insert(final T key) {
-        if (size >= capacity) {
-            throw new RuntimeException("The heap is full, cannot insert any more elements");
-        }
         ++size;
 
         var insertAt = size - 1;
