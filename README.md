@@ -6,28 +6,29 @@ Common algorithms and data structures implemented in Java.
 
 ## Data structures
 
-- Array
-- List
+- **Array**
+- **List**
     - Double-Linked list
-- Queue
+- **Queue**
     - FIFO queue
     - Priority queue
-- Tree
+- **Tree**
     - Binary tree
     - Binary search tree
-- Heap
+- **Heap**
     - Minimum Heap
-- Cache
+    - Maximum Heap
+- **Cache**
     - LRU cache
-- Stack
-- HashTable
-- Graph
+- **Stack**
+- **HashTable**
+- **Graph**
     - Directed graph (both weighted and unweighted)
     - Undirected graph (both weighted and unweighted)
 
 ## Algorithms
 
-- Tree traversal
+- **Tree traversal**
     - Pre-order
     - In-order
     - Post-order
